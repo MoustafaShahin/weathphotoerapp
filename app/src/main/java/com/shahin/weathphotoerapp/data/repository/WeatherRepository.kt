@@ -13,7 +13,7 @@ class WeatherRepository @Inject constructor(
 )
     :IWeatherRepository {
     override suspend fun saveWeatherItem(item: WeatherEntity) {
-        localDatasource.addWeatherItem(item)
+        localDatasource.saveWeatherItem(item)
     }
 
     override suspend fun getWeatherItems(): Flow<List<WeatherEntity>?> {

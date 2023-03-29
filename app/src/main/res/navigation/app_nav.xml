@@ -7,7 +7,20 @@
 
     <fragment
         android:id="@+id/weatherLogFragment"
-        android:name="com.shahin.weathphotoerapp.ui.WeatherLogFragment"
+        android:name="com.shahin.weathphotoerapp.ui.weatherLog.WeatherLogFragment"
         android:label="fragment_weather_log"
-        tools:layout="@layout/fragment_weather_log" />
+        tools:layout="@layout/fragment_weather_log" >
+        <action
+            android:id="@+id/action_weatherLogFragment_to_addNewLogItemFragment"
+            app:destination="@id/addNewLogItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewLogItemFragment"
+        android:name="com.shahin.weathphotoerapp.ui.addItem.AddNewLogItemFragment"
+        android:label="fragment_add_new_log_item"
+        tools:layout="@layout/fragment_add_new_log_item" >
+        <argument
+            android:name="image"
+            app:argType="string" />
+    </fragment>
 </navigation>

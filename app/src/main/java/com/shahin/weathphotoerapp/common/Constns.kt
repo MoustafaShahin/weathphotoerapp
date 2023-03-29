@@ -1,4 +1,4 @@
-package com.shahin.weathphotoerapp
+package com.shahin.weathphotoerapp.common
 
 object Constns {
 

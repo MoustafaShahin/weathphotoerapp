@@ -2,18 +2,23 @@ package com.shahin.weathphotoerapp.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.shahin.weathphotoerapp.Constns.NETWORK_CONNECTION_TIME_OUT
-import com.shahin.weathphotoerapp.Constns.NETWORK_READ_TIME_OUT
+import com.shahin.weathphotoerapp.common.Constns.NETWORK_CONNECTION_TIME_OUT
+import com.shahin.weathphotoerapp.common.Constns.NETWORK_READ_TIME_OUT
 import com.shahin.weathphotoerapp.data.remote.RetrofitServiceGenerator
 import com.shahin.weathphotoerapp.data.remote.interceptor.AppInterceptor
 import com.shahin.weathphotoerapp.data.remote.service.WeatherServicesApi
+import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+@Module
+@InstallIn(SingletonComponent::class)
 object ServiceGeneratorModule {
     @Singleton
     @Provides
@@ -51,7 +56,7 @@ object ServiceGeneratorModule {
 
     @Singleton
     @Provides
-    fun provideUserDataApis(retrofit: Retrofit): WeatherServicesApi {
+    fun provideWeatherDataApis(retrofit: Retrofit): WeatherServicesApi {
         return retrofit.create(WeatherServicesApi::class.java)
     }
 }

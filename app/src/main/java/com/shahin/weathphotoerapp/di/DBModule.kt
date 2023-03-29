@@ -2,7 +2,7 @@ package com.shahin.weathphotoerapp.di
 
 import android.app.Application
 import androidx.room.Room
-import com.shahin.weathphotoerapp.Constns.DB_NAME
+import com.shahin.weathphotoerapp.common.Constns.DB_NAME
 import com.shahin.weathphotoerapp.data.local.AppDataBase
 import com.shahin.weathphotoerapp.data.local.dao.WeatherDao
 import dagger.Module
