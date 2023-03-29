@@ -1,30 +1,20 @@
-package com.example.data.local.datasource
+package com.shahin.weathphotoerapp.data.local.datasource
 
-import com.example.data.ICoroutineDispatchers
+import com.shahin.weathphotoerapp.data.ICoroutineDispatchers
 import com.shahin.weathphotoerapp.data.local.dao.WeatherDao
-import com.example.data.local.entities.WeatherEntity
+import com.shahin.weathphotoerapp.data.local.entities.WeatherEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class WeatherLocalDatasource @Inject constructor(private val dao: WeatherDao, private val coroutineScopeDispatchers: ICoroutineDispatchers
-    ) :IWeatherLocalDatasource {
+class WeatherLocalDatasource
+@Inject constructor(private val dao: WeatherDao,
+                    private val coroutineScopeDispatchers: ICoroutineDispatchers
+    ) : IWeatherLocalDatasource {
 
-    override suspend fun addWeatherItem(item: WeatherEntity) {
+    override suspend fun saveWeatherItem(item: WeatherEntity) {
         return withContext(coroutineScopeDispatchers.IO){
-            dao.addWeatherItem(item)
-        }
-    }
-
-    override suspend fun updateWeatherItem(item: WeatherEntity) {
-        return withContext(coroutineScopeDispatchers.IO){
-            dao.updateWeatherItem(item)
-        }
-    }
-
-    override suspend fun deleteWeatherItem(item: WeatherEntity) {
-        return withContext(coroutineScopeDispatchers.IO){
-            dao.deleteWeatherItem(item)
+            dao.saveWeatherItem(item)
         }
     }
 
@@ -34,9 +24,4 @@ class WeatherLocalDatasource @Inject constructor(private val dao: WeatherDao, pr
         }
     }
 
-    override suspend fun getWeatherItem(itemId: Int): WeatherEntity? {
-        return withContext(coroutineScopeDispatchers.IO){
-            dao.getWeatherItem(itemId)
-        }
-    }
 }

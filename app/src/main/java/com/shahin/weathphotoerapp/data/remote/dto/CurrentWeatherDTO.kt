@@ -1,4 +1,4 @@
-package com.example.data.remote.dto
+package com.shahin.weathphotoerapp.data.remote.dto
 
 data class CurrentWeatherDTO(
     val current: Current?=null,

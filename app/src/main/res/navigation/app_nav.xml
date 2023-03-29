@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/weatherLogFragment"
-        android:name="com.shahin.weathphotoerapp.WeatherLogFragment"
+        android:name="com.shahin.weathphotoerapp.ui.WeatherLogFragment"
         android:label="fragment_weather_log"
         tools:layout="@layout/fragment_weather_log" />
 </navigation>

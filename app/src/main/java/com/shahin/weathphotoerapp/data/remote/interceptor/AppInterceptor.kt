@@ -1,8 +1,8 @@
-package com.example.data.remote.interceptor
+package com.shahin.weathphotoerapp.data.remote.interceptor
 
-import com.example.data.BuildConfig
-import com.example.data.Constns.AUTHORIZATION_HEADER
-import com.example.data.Constns.LANG_HEADER
+
+import com.shahin.weathphotoerapp.Constns.AUTHORIZATION_HEADER
+import com.shahin.weathphotoerapp.Constns.LANG_HEADER
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.util.*

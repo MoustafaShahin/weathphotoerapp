@@ -1,7 +1,8 @@
-package com.shahin.weathphotoerapp
+package com.shahin.weathphotoerapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.shahin.weathphotoerapp.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

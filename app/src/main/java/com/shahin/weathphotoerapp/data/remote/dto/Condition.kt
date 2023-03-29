@@ -1,4 +1,4 @@
-package com.example.data.remote.dto
+package com.shahin.weathphotoerapp.data.remote.dto
 
 import androidx.annotation.Keep
 

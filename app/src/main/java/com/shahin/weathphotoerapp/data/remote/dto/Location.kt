@@ -1,4 +1,4 @@
-package com.example.data.remote.dto
+package com.shahin.weathphotoerapp.data.remote.dto
 
 data class Location(
     val country: String?=null,

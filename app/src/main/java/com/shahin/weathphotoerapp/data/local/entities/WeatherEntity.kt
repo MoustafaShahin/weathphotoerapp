@@ -1,4 +1,4 @@
-package com.example.data.local.entities
+package com.shahin.weathphotoerapp.data.local.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -9,7 +9,7 @@ data class WeatherEntity(
     val id:Long?=null,
     val temp:Double?=null,
     val description:String?=null,
-    val iconUrl :String?=null,
+    val icon :String?=null,
     val cityName:String?=null,
     val photoPath:String?=null
 )

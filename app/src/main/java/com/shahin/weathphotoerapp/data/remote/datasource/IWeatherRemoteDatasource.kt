@@ -1,8 +1,6 @@
-package com.example.data.remote.datasource
+package com.shahin.weathphotoerapp.data.remote.datasource
 
-import com.example.data.remote.dto.CurrentWeatherDTO
-import retrofit2.Response
-import retrofit2.http.Query
+import com.shahin.weathphotoerapp.data.remote.dto.CurrentWeatherDTO
 
 interface IWeatherRemoteDatasource {
     suspend fun currentWeather(latLng:String): CurrentWeatherDTO?

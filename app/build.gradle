@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-platform-android'
     id 'dagger.hilt.android.plugin'
+    id 'org.jetbrains.kotlin.android'
 }
 android {
     namespace 'com.shahin.weathphotoerapp'
@@ -38,6 +39,9 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.core:core-ktx:+'
+    implementation 'androidx.core:core-ktx:+'
+    implementation 'androidx.core:core-ktx:+'
     def room_version = "2.5.0"
     def retrofit_version = "2.9.0"
 
@@ -67,5 +71,7 @@ dependencies {
     // Retrofit
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2'
+    //google map service
+    implementation "com.google.android.gms:play-services-location:21.0.1"
 
 }
