@@ -16,11 +16,9 @@ import javax.inject.Singleton
 object DBModule {
 
 
-
-
     @Singleton
     @Provides
-    fun providesDataBase(application: Application):AppDataBase{
+    fun providesDataBase(application: Application): AppDataBase {
         return Room.databaseBuilder(
             application,
             AppDataBase::class.java,
@@ -31,7 +29,7 @@ object DBModule {
     @Singleton
     @Provides
     fun provideDAO(appDataBase: AppDataBase)
-    :WeatherDao {
-        return  appDataBase.weatherDao()
+            : WeatherDao {
+        return appDataBase.weatherDao()
     }
 }

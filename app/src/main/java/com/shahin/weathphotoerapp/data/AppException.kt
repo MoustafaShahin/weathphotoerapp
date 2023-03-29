@@ -1,7 +1,5 @@
 package com.shahin.weathphotoerapp.data
 
-import kotlin.Exception
-
 sealed class AppException(errorMessage: String?) : Exception(errorMessage) {
     object NetworkException : AppException("Network Exception")
 

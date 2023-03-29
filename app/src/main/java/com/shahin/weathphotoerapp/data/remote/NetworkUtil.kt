@@ -6,7 +6,7 @@ import java.io.IOException
 
 object NetworkUtil {
 
-    suspend fun <T>processAPICall(call:suspend ()->Response<T>):T?{
+    suspend fun <T> processAPICall(call: suspend () -> Response<T>): T? {
         try {
             val response = call.invoke()
 

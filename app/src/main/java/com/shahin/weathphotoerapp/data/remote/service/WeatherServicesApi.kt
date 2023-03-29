@@ -9,6 +9,6 @@ interface WeatherServicesApi {
 
     @GET("current.json")
     suspend fun currentWeather(
-        @Query("q") latLng:String
-    ):Response<CurrentWeatherDTO>
+        @Query("q") latLng: String
+    ): Response<CurrentWeatherDTO>
 }

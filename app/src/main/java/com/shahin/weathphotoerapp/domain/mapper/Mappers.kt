@@ -1,15 +1,15 @@
 package com.shahin.weathphotoerapp.domain.mapper
 
 
-import com.shahin.weathphotoerapp.domain.model.WeatherItem
 import com.shahin.weathphotoerapp.data.local.entities.WeatherEntity
 import com.shahin.weathphotoerapp.data.remote.dto.CurrentWeatherDTO
+import com.shahin.weathphotoerapp.domain.model.WeatherItem
 import java.security.SecureRandom
 
 
-object RemoteMapper: IMapper<CurrentWeatherDTO, WeatherItem> {
+object RemoteMapper : IMapper<CurrentWeatherDTO, WeatherItem> {
     override fun mapToDomain(item: CurrentWeatherDTO?): WeatherItem? {
-        return if (item==null) null else WeatherItem(
+        return if (item == null) null else WeatherItem(
             id = SecureRandom().nextLong(),
             temp = item.current?.temp_c,
             description = item.current?.condition?.text,
@@ -26,9 +26,9 @@ object RemoteMapper: IMapper<CurrentWeatherDTO, WeatherItem> {
 
 }
 
-object LocalMapper: IMapper<WeatherEntity, WeatherItem> {
+object LocalMapper : IMapper<WeatherEntity, WeatherItem> {
     override fun mapToDomain(item: WeatherEntity?): WeatherItem? {
-        return if (item==null) null else WeatherItem(
+        return if (item == null) null else WeatherItem(
             id = item.id,
             temp = item.temp,
             description = item.description,
@@ -39,7 +39,7 @@ object LocalMapper: IMapper<WeatherEntity, WeatherItem> {
     }
 
     override fun mapFromDomain(item: WeatherItem?): WeatherEntity? {
-        return if (item==null) null else WeatherEntity(
+        return if (item == null) null else WeatherEntity(
             id = item.id,
             temp = item.temp,
             description = item.description,

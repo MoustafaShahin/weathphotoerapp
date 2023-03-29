@@ -2,20 +2,20 @@ package com.shahin.weathphotoerapp.ui.weatherLog
 
 import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.shahin.weathphotoerapp.common.ImageUtils.MyCameraUtility
 import com.shahin.weathphotoerapp.databinding.FragmentWeatherLogBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.io.File
 
 
@@ -37,7 +37,7 @@ class WeatherLogFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding =  FragmentWeatherLogBinding.inflate(inflater, container, false)
+        binding = FragmentWeatherLogBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -45,25 +45,33 @@ class WeatherLogFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-floatingActionButton.setOnClickListener {
-    MyCameraUtility.showImageOptionsBottomSheet(requireActivity(), childFragmentManager)
+            floatingActionButton.setOnClickListener {
+                MyCameraUtility.showImageOptionsBottomSheet(requireActivity(), childFragmentManager)
 
 
-}
+            }
         }
 
         observe()
     }
 
     private fun observe() {
-        viewModel.weatherLogLiveData.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it.size.toString(), Toast.LENGTH_SHORT).show()
-            if (it.isNullOrEmpty()) {
-
-            } else {
-
+        lifecycleScope.launch {
+            viewModel.weatherItemsStateFlow.collect { items ->
+                if (items.isNullOrEmpty()) {
+                    Toast.makeText(requireContext(), "No Data yet", Toast.LENGTH_SHORT).show()
+                } else {
+                    binding.rvLog.adapter = LogAdapter(items.toList()) {
+                        findNavController().navigate(
+                            WeatherLogFragmentDirections.actionWeatherLogFragmentToSinglePreviewFragment(
+                                it
+                            )
+                        )
+                    }
+                }
             }
         }
+
     }
 
 
@@ -85,7 +93,11 @@ floatingActionButton.setOnClickListener {
     }
 
     private fun goToAddWeather() {
-        findNavController().navigate(WeatherLogFragmentDirections.actionWeatherLogFragmentToAddNewLogItemFragment(image))
+        findNavController().navigate(
+            WeatherLogFragmentDirections.actionWeatherLogFragmentToAddNewLogItemFragment(
+                image
+            )
+        )
     }
 
 }

@@ -21,7 +21,7 @@ class AppInterceptor @Inject constructor() :
         return chain.proceed(request)
     }
 
-    private fun getDefaultLanguage():String{
+    private fun getDefaultLanguage(): String {
         return Locale.getDefault().language
     }
 }

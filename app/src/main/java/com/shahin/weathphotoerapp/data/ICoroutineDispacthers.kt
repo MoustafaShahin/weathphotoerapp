@@ -3,11 +3,7 @@ package com.shahin.weathphotoerapp.data
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
-/**
- * there will be 2 wrapper classes 1 for real code [AppCoroutineDispatchers]
- * and the other for unit testing [TestCoroutineDispatchers]
- * *
- */
+
 interface ICoroutineDispatchers {
     val IO: CoroutineDispatcher
     val MAIN: CoroutineDispatcher
@@ -24,12 +20,3 @@ class AppCoroutineDispatchers(
     override val DEFAULT: CoroutineDispatcher = Dispatchers.Default
 ) : ICoroutineDispatchers
 
-/**
- * Wrapper class , wraps the [Dispatchers]
- * for the unit testing to replace the io , main with [TestCoroutineDispatchers]
- */
-class TestCoroutineDispatchers(
-    override val IO: CoroutineDispatcher,
-    override val MAIN: CoroutineDispatcher,
-    override val DEFAULT: CoroutineDispatcher
-) : ICoroutineDispatchers

@@ -11,14 +11,12 @@ import javax.inject.Singleton
 @Singleton
 class RetrofitServiceGenerator @Inject constructor(
     private val gson: Gson,
-    private val httpClient: OkHttpClient) {
+    private val httpClient: OkHttpClient
+) {
 
 
-
-
-
-    fun returnRetrofitInstance()  :Retrofit{
-      return  Retrofit.Builder()
+    fun returnRetrofitInstance(): Retrofit {
+        return Retrofit.Builder()
             .baseUrl(NETWORK_BASE_URL)
             .client(httpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))

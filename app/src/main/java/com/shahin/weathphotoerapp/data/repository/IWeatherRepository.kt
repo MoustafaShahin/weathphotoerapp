@@ -8,6 +8,6 @@ interface IWeatherRepository {
 
     suspend fun saveWeatherItem(item: WeatherEntity)
     suspend fun getWeatherItems(): Flow<List<WeatherEntity>?>
-    suspend fun getCurrentWeatherData(latLng:String): CurrentWeatherDTO?
+    suspend fun getCurrentWeatherData(latLng: String): CurrentWeatherDTO?
 
 }

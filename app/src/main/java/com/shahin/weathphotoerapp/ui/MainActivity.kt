@@ -1,8 +1,8 @@
 package com.shahin.weathphotoerapp.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import com.shahin.weathphotoerapp.R
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,5 +22,18 @@ class MainActivity : AppCompatActivity() {
         navHostFragment.childFragmentManager.fragments[size - 1]
             .onActivityResult(requestCode, resultCode, data)
 
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String?>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.navHost) as NavHostFragment?
+        val size = navHostFragment!!.childFragmentManager.fragments.size
+        navHostFragment.childFragmentManager.fragments[size - 1]
+            .onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 }

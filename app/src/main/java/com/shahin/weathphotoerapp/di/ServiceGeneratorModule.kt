@@ -29,7 +29,10 @@ object ServiceGeneratorModule {
 
     @Singleton
     @Provides
-    fun provideHttpOkClient(interceptor: AppInterceptor, httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+    fun provideHttpOkClient(
+        interceptor: AppInterceptor,
+        httpLoggingInterceptor: HttpLoggingInterceptor
+    ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(interceptor)
             .readTimeout(NETWORK_READ_TIME_OUT, TimeUnit.SECONDS)
@@ -37,6 +40,7 @@ object ServiceGeneratorModule {
             .addInterceptor(httpLoggingInterceptor)
             .build()
     }
+
     @Singleton
     @Provides
     fun provideHttpLogger(): HttpLoggingInterceptor {
@@ -50,7 +54,7 @@ object ServiceGeneratorModule {
     fun provideRetrofitClient(
         gson: Gson,
         httpClient: OkHttpClient
-    ):Retrofit {
+    ): Retrofit {
         return RetrofitServiceGenerator(gson, httpClient).returnRetrofitInstance()
     }
 
